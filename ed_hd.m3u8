@@ -1,7 +1,7 @@
 #EXTM3U
 
 #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="ed_audio",LANGUAGE="en",NAME="Main",AUTOSELECT=YES,DEFAULT=YES
-#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="ed_audio",LANGUAGE="en",NAME="Audio Described",AUTOSELECT=YES,DEFAULT=NO,CHARACTERISTICS="public.accessibility.describes-video",URI="JJHuntDescription/index.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="ed_audio",LANGUAGE="en",NAME="Audio Described",AUTOSELECT=YES,DEFAULT=NO,CHARACTERISTICS="public.accessibility.describes-video",URI="JJHuntDescriptionFinal/index.m3u8"
 
 #EXT-X-STREAM-INF:BANDWIDTH=1708000,CODECS="mp4a.40.2, avc1.42001e",RESOLUTION=640x360,AUDIO="ed_audio"
 ed_hd_hls/index.m3u8
