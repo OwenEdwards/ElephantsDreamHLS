@@ -1,6 +1,6 @@
 #EXTM3U
 
-#EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",NAME="Audio Description",DEFAULT=YES,AUTOSELECT=YES,FORCED=NO,LANGUAGE="en",CHARACTERISTICS="public.accessibility.transcribes-spoken-dialog",URI="ed_hls_webvtt/index.m3u8"
+#EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",NAME="Audio Description",DEFAULT=YES,AUTOSELECT=YES,FORCED=NO,LANGUAGE="en",CHARACTERISTICS="public.accessibility.transcribes-spoken-dialog,public.accessibility.describes-video",URI="ed_hls_webvtt/index.m3u8"
 
 #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="ed_audio_64k",LANGUAGE="en",NAME="Main",AUTOSELECT=YES,DEFAULT=YES
 #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="ed_audio_64k",LANGUAGE="en",NAME="Audio Described",AUTOSELECT=YES,DEFAULT=NO,CHARACTERISTICS="public.accessibility.describes-video",URI="ed_hls_adesc0/index.m3u8"
