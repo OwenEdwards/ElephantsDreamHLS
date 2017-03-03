@@ -4,12 +4,14 @@
 
 #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="ed_audio_64k",LANGUAGE="en",NAME="Main",AUTOSELECT=YES,DEFAULT=YES
 #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="ed_audio_64k",LANGUAGE="en",NAME="Audio Described",AUTOSELECT=YES,DEFAULT=NO,CHARACTERISTICS="public.accessibility.describes-video",URI="ed_hls_adesc0/index.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="ed_audio_64k",LANGUAGE="en",NAME="Just Audio Description",AUTOSELECT=YES,DEFAULT=NO,CHARACTERISTICS="public.accessibility.describes-video",URI="ed_hls_just_adesc0/index.m3u8"
 
 #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="ed_audio_128k",LANGUAGE="en",NAME="Main",AUTOSELECT=YES,DEFAULT=YES
 #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="ed_audio_128k",LANGUAGE="en",NAME="Audio Described",AUTOSELECT=YES,DEFAULT=NO,CHARACTERISTICS="public.accessibility.describes-video",URI="ed_hls_adesc1/index.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="ed_audio_64k",LANGUAGE="en",NAME="Just Audio Description",AUTOSELECT=YES,DEFAULT=NO,CHARACTERISTICS="public.accessibility.describes-video",URI="ed_hls_just_adesc1/index.m3u8"
 
 
-#EXT-X-STREAM-INF:BANDWIDTH=680000,CODECS="mp4a.40.2, avc1.4d000d",RESOLUTION=480x270,AUDIO="ed_audio_64k",SUBTITLES="subs"
+#EXT-X-STREAM-INF:BANDWIDTH=616000,CODECS="mp4a.40.2, avc1.4d000d",RESOLUTION=480x270,AUDIO="ed_audio_64k",SUBTITLES="subs"
 ed_hls_gear1/index.m3u8
 
 #EXT-X-STREAM-INF:BANDWIDTH=1583000,CODECS="mp4a.40.2, avc1.4d001e",RESOLUTION=640x360,AUDIO="ed_audio_64k",SUBTITLES="subs"
@@ -18,13 +20,13 @@ ed_hls_gear2/index.m3u8
 #EXT-X-STREAM-INF:BANDWIDTH=1411000,CODECS="mp4a.40.2, avc1.4d001f",RESOLUTION=960x540,AUDIO="ed_audio_64k",SUBTITLES="subs"
 ed_hls_gear3/index.m3u8
 
-#EXT-X-STREAM-INF:BANDWIDTH=2270000,CODECS="mp4a.40.2, avc1.4d001f",RESOLUTION=1280x720,AUDIO="ed_audio_128k",SUBTITLES="subs"
+#EXT-X-STREAM-INF:BANDWIDTH=2548000,CODECS="mp4a.40.2, avc1.4d001f",RESOLUTION=1280x720,AUDIO="ed_audio_128k",SUBTITLES="subs"
 ed_hls_gear4/index.m3u8
 
 #EXT-X-STREAM-INF:BANDWIDTH=6121000,CODECS="mp4a.40.2, avc1.4d0028",RESOLUTION=1920x1080,AUDIO="ed_audio_128k",SUBTITLES="subs"
 ed_hls_gear5/index.m3u8
 
-#EXT-X-STREAM-INF:BANDWIDTH=223000,CODECS="mp4a.40.2, avc1.4d001e",AUDIO="ed_audio_64k",SUBTITLES="subs"
+#EXT-X-STREAM-INF:BANDWIDTH=147000,CODECS="mp4a.40.2, avc1.4d001e",AUDIO="ed_audio_64k",SUBTITLES="subs"
 ed_hls_gear0/index.m3u8
 
 #EXT-X-ENDLIST

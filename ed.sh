@@ -55,12 +55,22 @@ cd    ed_hls_gear0
 ffmpeg -i ~/Downloads/ed_hd.avi -n -vn -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
 cd    ..
 
-mkdir ed_hls_adesc1
-cd    ed_hls_adesc1
+mkdir ed_hls_adesc0
+cd    ed_hls_adesc0
 ffmpeg -i ~/Dropbox/Elephants\ Dream/Elephants\ Dream\ final.mov -n -vn -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
 cd    ..
 
-mkdir ed_hls_adesc0
-cd    ed_hls_adesc0
+mkdir ed_hls_adesc1
+cd    ed_hls_adesc1
 ffmpeg -i ~/Dropbox/Elephants\ Dream/Elephants\ Dream\ final.mov -n -vn -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
+cd    ..
+
+mkdir ed_hls_just_adesc0
+cd    ed_hls_just_adesc0
+ffmpeg -i ~/Dropbox/Elephants\ Dream/Elephants\ Dream\ Audio\ Description.wav -n -vn -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
+cd    ..
+
+mkdir ed_hls_just_adesc1
+cd    ed_hls_just_adesc1
+ffmpeg -i ~/Dropbox/Elephants\ Dream/Elephants\ Dream\ Audio\ Description.wav -n -vn -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
 cd    ..
