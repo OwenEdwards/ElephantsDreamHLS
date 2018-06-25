@@ -8,7 +8,7 @@
 
 #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="ed_audio_128k",LANGUAGE="en",NAME="Main",AUTOSELECT=YES,DEFAULT=YES
 #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="ed_audio_128k",LANGUAGE="en",NAME="Audio Described",AUTOSELECT=YES,DEFAULT=NO,CHARACTERISTICS="public.accessibility.describes-video",URI="ed_hls_adesc1/index.m3u8"
-#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="ed_audio_64k",LANGUAGE="en",NAME="Just Audio Description",AUTOSELECT=YES,DEFAULT=NO,CHARACTERISTICS="public.accessibility.describes-video",URI="ed_hls_just_adesc1/index.m3u8"
+#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="ed_audio_128k",LANGUAGE="en",NAME="Just Audio Description",AUTOSELECT=YES,DEFAULT=NO,CHARACTERISTICS="public.accessibility.describes-video",URI="ed_hls_just_adesc1/index.m3u8"
 
 
 #EXT-X-STREAM-INF:BANDWIDTH=616000,CODECS="mp4a.40.2, avc1.4d000d",RESOLUTION=480x270,AUDIO="ed_audio_64k",SUBTITLES="subs"
