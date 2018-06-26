@@ -46,70 +46,90 @@ fi
 
 
 
-mkdir ed_hls_gear5
+if [ ! -d ed_hls_gear5 ]; then
+  mkdir ed_hls_gear5
+fi
 cd    ed_hls_gear5
 if [ ! -f index0.ts ]; then
   ffmpeg -i ../ed_hd.avi -n -s 1920x1080 -vcodec h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 4.0 -b:v 1920k -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
 fi
 cd    ..
 
-mkdir ed_hls_gear4
+if [ ! -d ed_hls_gear4 ]; then
+  mkdir ed_hls_gear4
+fi
 cd    ed_hls_gear4
 if [ ! -f index0.ts ]; then
   ffmpeg -i ../ed_hd.avi -n -s 1280x720 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 3.1 -b:v 896k -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
 fi
 cd    ..
 
-mkdir ed_hls_gear3
+if [ ! -d ed_hls_gear3 ]; then
+  mkdir ed_hls_gear3
+fi
 cd    ed_hls_gear3
 if [ ! -f index0.ts ]; then
   ffmpeg -i ../ed_hd.avi -n -s 960x540 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 3.1 -b:v 448k -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
 fi
 cd    ..
 
-mkdir ed_hls_gear2
+if [ ! -d ed_hls_gear2 ]; then
+  mkdir ed_hls_gear2
+fi
 cd    ed_hls_gear2
 if [ ! -f index0.ts ]; then
   ffmpeg -i ../ed_hd.avi -n -s 640x360 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 3.0 -b:v 448k -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
 fi
 cd    ..
 
-mkdir ed_hls_gear1
+if [ ! -d ed_hls_gear1 ]; then
+  mkdir ed_hls_gear1
+fi
 cd    ed_hls_gear1
 if [ ! -f index0.ts ]; then
   ffmpeg -i ../ed_hd.avi -n -s 480x270 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 1.3 -b:v 192k -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
 fi
 cd    ..
 
-mkdir ed_hls_gear0
+if [ ! -d ed_hls_gear0 ]; then
+  mkdir ed_hls_gear0
+fi
 cd    ed_hls_gear0
 if [ ! -f index0.ts ]; then
   ffmpeg -i ../ed_hd.avi -n -vn -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
 fi
 cd    ..
 
-mkdir ed_hls_adesc0
+if [ ! -d ed_hls_adesc0 ]; then
+  mkdir ed_hls_adesc0
+fi
 cd    ed_hls_adesc0
 if [ ! -f index0.ts ]; then
   ffmpeg -i ../ElephantsDreamAudioDescription/Elephants\ Dream\ with\ Audio\ Description.mov -n -vn -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
 fi
 cd    ..
 
-mkdir ed_hls_adesc1
+if [ ! -d ed_hls_adesc1 ]; then
+  mkdir ed_hls_adesc1
+fi
 cd    ed_hls_adesc1
 if [ ! -f index0.ts ]; then
   ffmpeg -i ../ElephantsDreamAudioDescription/Elephants\ Dream\ with\ Audio\ Description.mov -n -vn -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
 fi
 cd    ..
 
-mkdir ed_hls_just_adesc0
+if [ ! -d ed_hls_just_adesc0 ]; then
+  mkdir ed_hls_just_adesc0
+fi
 cd    ed_hls_just_adesc0
 if [ ! -f index0.ts ]; then
   ffmpeg -i ../ElephantsDreamAudioDescription/Elephants\ Dream\ Audio\ Description.wav -n -vn -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
 fi
 cd    ..
 
-mkdir ed_hls_just_adesc1
+if [ ! -d ed_hls_just_adesc1 ]; then
+  mkdir ed_hls_just_adesc1
+fi
 cd    ed_hls_just_adesc1
 if [ ! -f index0.ts ]; then
   ffmpeg -i ../ElephantsDreamAudioDescription/Elephants\ Dream\ Audio\ Description.wav -n -vn -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
@@ -118,7 +138,9 @@ cd    ..
 
 # Create the Description WebVTT file
 
-mkdir ed_hls_webvtt
+if [ ! -d ed_hls_webvtt ]; then
+  mkdir ed_hls_webvtt
+fi
 
 file='descriptions.en.vtt'
 
@@ -160,3 +182,5 @@ $file
 EOF
 
 done
+
+mediastreamvalidator -O . ed_hd.m3u8 && hlsreport.py -o ed_hd.html validation_data.json
