@@ -4,5 +4,5 @@
 #EXT-X-MEDIA-SEQUENCE:0
 #EXT-X-PLAYLIST-TYPE:VOD
 #EXTINF:653,
-index0.vtt
+captions.sv.vtt
 #EXT-X-ENDLIST
