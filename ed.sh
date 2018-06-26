@@ -7,17 +7,30 @@
 #    Video: msmpeg4v2 (MP42 / 0x3234504D), yuv420p, 1920x1080, 10002 kb/s, 24 fps, 24 tbr, 24 tbn, 24 tbc
 #    Audio: AC3 format, 48000 Hz, 5.1 channels, fltp, 448 kb/s
 
-if [ ! -f ed_hd.avi ]; then
-  wget http://archive.org/download/ElephantsDream/ed_hd.avi
+if [ ! -f 'ed_hd.avi' ]; then
+  wget 'http://archive.org/download/ElephantsDream/ed_hd.avi'
+else
+  echo "File 'ed_hd.avi' is already present"
 fi
 
 # Get the audio description parts
 
-if [ ! -d ElephantsDreamAudioDescription ]; then
-  git clone --depth 1 https://github.com/OwenEdwards/ElephantsDreamAudioDescription.git
+if [ ! -f 'Elephants Dream with Audio Description.mov' ]; then
+  wget 'https://media.githubusercontent.com/media/OwenEdwards/ElephantsDreamAudioDescription/master/Elephants Dream with Audio Description.mov'
 else
-  ( cd ElephantsDreamAudioDescription; git pull )
+  echo "File 'Elephants Dream with Audio Description.mov' is already present"
 fi
+if [ ! -f 'Elephants Dream Audio Description.wav' ]; then
+  wget 'https://media.githubusercontent.com/media/OwenEdwards/ElephantsDreamAudioDescription/master/Elephants Dream Audio Description.wav'
+else
+  echo "File 'Elephants Dream Audio Description.wav' is already present"
+fi
+if [ ! -f 'ed-description-jjhunt.webvtt' ]; then
+  wget 'https://raw.githubusercontent.com/OwenEdwards/ElephantsDreamAudioDescription/master/ed-description-jjhunt.webvtt'
+else
+  echo "File 'ed-description-jjhunt.webvtt' is already present"
+fi
+
 
 # Video:
 #
@@ -45,115 +58,72 @@ fi
 #  -vf scale=w=1920:h=1080:force_original_aspect_ratio=decrease -c:a aac -ar 48000 -c:v h264 -profile:v main -crf 20 -sc_threshold 0 -g 48 -keyint_min 48 -hls_time 4 -hls_playlist_type vod -b:v 5000k -maxrate 5350k -bufsize 7500k -b:a 192k -hls_segment_filename ed_hls/1080p_%03d.ts ed_hls/1080p.m3u8
 
 
+mkdir -p ed_hls_gear5
+if [ ! -f ed_hls_gear5/index0.ts ]; then
+  ffmpeg -i ed_hd.avi -n -s 1920x1080 -vcodec h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 4.0 -b:v 1920k -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ed_hls_gear5/index.m3u8
+fi
 
-if [ ! -d ed_hls_gear5 ]; then
-  mkdir ed_hls_gear5
+mkdir -p ed_hls_gear4
+if [ ! -f ed_hls_gear4/index0.ts ]; then
+  ffmpeg -i ed_hd.avi -n -s 1280x720 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 3.1 -b:v 896k -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ed_hls_gear4/index.m3u8
 fi
-cd    ed_hls_gear5
-if [ ! -f index0.ts ]; then
-  ffmpeg -i ../ed_hd.avi -n -s 1920x1080 -vcodec h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 4.0 -b:v 1920k -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
-fi
-cd    ..
 
-if [ ! -d ed_hls_gear4 ]; then
-  mkdir ed_hls_gear4
+mkdir -p ed_hls_gear3
+if [ ! -f ed_hls_gear3/index0.ts ]; then
+  ffmpeg -i ed_hd.avi -n -s 960x540 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 3.1 -b:v 448k -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ed_hls_gear3/index.m3u8
 fi
-cd    ed_hls_gear4
-if [ ! -f index0.ts ]; then
-  ffmpeg -i ../ed_hd.avi -n -s 1280x720 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 3.1 -b:v 896k -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
-fi
-cd    ..
 
-if [ ! -d ed_hls_gear3 ]; then
-  mkdir ed_hls_gear3
+mkdir -p ed_hls_gear2
+if [ ! -f ed_hls_gear2/index0.ts ]; then
+  ffmpeg -i ed_hd.avi -n -s 640x360 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 3.0 -b:v 448k -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ed_hls_gear2/index.m3u8
 fi
-cd    ed_hls_gear3
-if [ ! -f index0.ts ]; then
-  ffmpeg -i ../ed_hd.avi -n -s 960x540 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 3.1 -b:v 448k -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
-fi
-cd    ..
 
-if [ ! -d ed_hls_gear2 ]; then
-  mkdir ed_hls_gear2
+mkdir -p ed_hls_gear1
+if [ ! -f ed_hls_gear1/index0.ts ]; then
+  ffmpeg -i ed_hd.avi -n -s 480x270 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 1.3 -b:v 192k -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ed_hls_gear1/index.m3u8
 fi
-cd    ed_hls_gear2
-if [ ! -f index0.ts ]; then
-  ffmpeg -i ../ed_hd.avi -n -s 640x360 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 3.0 -b:v 448k -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
-fi
-cd    ..
 
-if [ ! -d ed_hls_gear1 ]; then
-  mkdir ed_hls_gear1
+mkdir -p ed_hls_gear0
+if [ ! -f ed_hls_gear0/index0.ts ]; then
+  ffmpeg -i ed_hd.avi -n -vn -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ed_hls_gear0/index.m3u8
 fi
-cd    ed_hls_gear1
-if [ ! -f index0.ts ]; then
-  ffmpeg -i ../ed_hd.avi -n -s 480x270 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 1.3 -b:v 192k -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
-fi
-cd    ..
 
-if [ ! -d ed_hls_gear0 ]; then
-  mkdir ed_hls_gear0
+mkdir -p ed_hls_adesc0
+if [ ! -f ed_hls_adesc0/index0.ts ]; then
+  ffmpeg -i 'Elephants Dream with Audio Description.mov' -n -vn -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ed_hls_adesc0/index.m3u8
 fi
-cd    ed_hls_gear0
-if [ ! -f index0.ts ]; then
-  ffmpeg -i ../ed_hd.avi -n -vn -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
-fi
-cd    ..
 
-if [ ! -d ed_hls_adesc0 ]; then
-  mkdir ed_hls_adesc0
+mkdir -p ed_hls_adesc1
+if [ ! -f ed_hls_adesc1/index0.ts ]; then
+  ffmpeg -i 'Elephants Dream with Audio Description.mov' -n -vn -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ed_hls_adesc1/index.m3u8
 fi
-cd    ed_hls_adesc0
-if [ ! -f index0.ts ]; then
-  ffmpeg -i ../ElephantsDreamAudioDescription/Elephants\ Dream\ with\ Audio\ Description.mov -n -vn -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
-fi
-cd    ..
 
-if [ ! -d ed_hls_adesc1 ]; then
-  mkdir ed_hls_adesc1
+mkdir -p ed_hls_just_adesc0
+if [ ! -f ed_hls_just_adesc0/index0.ts ]; then
+  ffmpeg -i 'Elephants Dream Audio Description.wav' -n -vn -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ed_hls_just_adesc0/index.m3u8
 fi
-cd    ed_hls_adesc1
-if [ ! -f index0.ts ]; then
-  ffmpeg -i ../ElephantsDreamAudioDescription/Elephants\ Dream\ with\ Audio\ Description.mov -n -vn -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
-fi
-cd    ..
 
-if [ ! -d ed_hls_just_adesc0 ]; then
-  mkdir ed_hls_just_adesc0
+mkdir -p ed_hls_just_adesc1
+if [ ! -f ed_hls_just_adesc1/index0.ts ]; then
+  ffmpeg -i 'Elephants Dream Audio Description.wav' -n -vn -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ed_hls_just_adesc1/index.m3u8
 fi
-cd    ed_hls_just_adesc0
-if [ ! -f index0.ts ]; then
-  ffmpeg -i ../ElephantsDreamAudioDescription/Elephants\ Dream\ Audio\ Description.wav -n -vn -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
-fi
-cd    ..
-
-if [ ! -d ed_hls_just_adesc1 ]; then
-  mkdir ed_hls_just_adesc1
-fi
-cd    ed_hls_just_adesc1
-if [ ! -f index0.ts ]; then
-  ffmpeg -i ../ElephantsDreamAudioDescription/Elephants\ Dream\ Audio\ Description.wav -n -vn -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls index.m3u8
-fi
-cd    ..
 
 # Create the Description WebVTT file
 
-if [ ! -d ed_hls_webvtt ]; then
-  mkdir ed_hls_webvtt
-fi
+mkdir -p ed_hls_webvtt
 
 file='descriptions.en.vtt'
 
 sed 's/^WEBVTT/&\
-X-TIMESTAMP-MAP=MPEGTS:90000,LOCAL:00:00:00.000/1' < ElephantsDreamAudioDescription/ed-description-jjhunt.webvtt > ed_hls_webvtt/$file
+X-TIMESTAMP-MAP=MPEGTS:90000,LOCAL:00:00:00.000/1' < ed-description-jjhunt.webvtt > ed_hls_webvtt/$file
 
 cat > ed_hls_webvtt/$( basename $file .vtt ).m3u8 << EOF
 #EXTM3U
 #EXT-X-VERSION:3
-#EXT-X-TARGETDURATION:653
+#EXT-X-TARGETDURATION:654
 #EXT-X-MEDIA-SEQUENCE:0
 #EXT-X-PLAYLIST-TYPE:VOD
-#EXTINF:653,
+#EXTINF:654,
 $file
 #EXT-X-ENDLIST
 EOF
@@ -173,10 +143,10 @@ X-TIMESTAMP-MAP=MPEGTS:90000,LOCAL:00:00:00.000/1' < $file > ed_hls_webvtt/$file
   cat > ed_hls_webvtt/$( basename $file .vtt ).m3u8 << EOF
 #EXTM3U
 #EXT-X-VERSION:3
-#EXT-X-TARGETDURATION:653
+#EXT-X-TARGETDURATION:654
 #EXT-X-MEDIA-SEQUENCE:0
 #EXT-X-PLAYLIST-TYPE:VOD
-#EXTINF:653,
+#EXTINF:654,
 $file
 #EXT-X-ENDLIST
 EOF
