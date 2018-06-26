@@ -35,14 +35,15 @@ fi
 # Video:
 #
 #         Stream ,              Video            ,        Audio
-# gear5: 2048kbps, 1920x1080, Main, 4.0, 1920kbps, AAC-LC, Stereo, 128kbps
-# gear4: 1024kbps,  1280x720, Main, 3.1,  896kbps, AAC-LC, Stereo, 128kbps
-# gear3:  512kbps,   960x540, Main, 3.1,  448kbps, AAC-LC, Stereo,  64kbps
-# gear2:  512kbps,   640x360, Main, 3.0,  448kbps, AAC-LC, Stereo,  64kbps
-# gear1:  256kbps,   480x270, Main, 1.3,  192kbps, AAC-LC, Stereo,  64kbps
+# gear5: 2800kbps, 1920x1080, Main, 4.0, 1920kbps, AAC-LC, Stereo, 128kbps
+# gear4: 1980kbps,  1280x720, Main, 3.1,  896kbps, AAC-LC, Stereo, 128kbps
+# gear3: 1400kbps,   842x480, Main, 3.1,  448kbps, AAC-LC, Stereo,  64kbps
+# gear2:  990kbps,   640x360, Main, 3.0,  448kbps, AAC-LC, Stereo,  64kbps
+# gear1:  700kbps,   480x270, Main, 1.3,  192kbps, AAC-LC, Stereo,  64kbps
+#
 # gear0:   64kbps,         -,    -,   -,        -, AAC-LC, Stereo,  64kbps
 #
-# Description audio tracks:
+# Audio tracks:
 #
 # AAC-LC, Stereo, 128kbps
 # AAC-LC, Stereo,  64kbps
@@ -60,52 +61,57 @@ fi
 
 mkdir -p ed_hls_gear5
 if [ ! -f ed_hls_gear5/index0.ts ]; then
-  ffmpeg -i ed_hd.avi -n -s 1920x1080 -vcodec h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 4.0 -b:v 1920k -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ed_hls_gear5/index.m3u8
+  ffmpeg -i ed_hd.avi -n -s 1920x1080 -vcodec h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 4.0 -b:v 2800k -an -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_gear5/index.m3u8
 fi
 
 mkdir -p ed_hls_gear4
 if [ ! -f ed_hls_gear4/index0.ts ]; then
-  ffmpeg -i ed_hd.avi -n -s 1280x720 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 3.1 -b:v 896k -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ed_hls_gear4/index.m3u8
+  ffmpeg -i ed_hd.avi -n -s 1280x720 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 3.1 -b:v 1980k -an -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_gear4/index.m3u8
 fi
 
 mkdir -p ed_hls_gear3
 if [ ! -f ed_hls_gear3/index0.ts ]; then
-  ffmpeg -i ed_hd.avi -n -s 960x540 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 3.1 -b:v 448k -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ed_hls_gear3/index.m3u8
+  ffmpeg -i ed_hd.avi -n -s 842x480 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 3.1 -b:v 1400k -an -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_gear3/index.m3u8
 fi
 
 mkdir -p ed_hls_gear2
 if [ ! -f ed_hls_gear2/index0.ts ]; then
-  ffmpeg -i ed_hd.avi -n -s 640x360 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 3.0 -b:v 448k -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ed_hls_gear2/index.m3u8
+  ffmpeg -i ed_hd.avi -n -s 640x360 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 3.0 -b:v 990k -an -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_gear2/index.m3u8
 fi
 
 mkdir -p ed_hls_gear1
 if [ ! -f ed_hls_gear1/index0.ts ]; then
-  ffmpeg -i ed_hd.avi -n -s 480x270 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 1.3 -b:v 192k -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ed_hls_gear1/index.m3u8
+  ffmpeg -i ed_hd.avi -n -s 480x270 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 1.3 -b:v 700k -an -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_gear1/index.m3u8
 fi
 
-mkdir -p ed_hls_gear0
-if [ ! -f ed_hls_gear0/index0.ts ]; then
-  ffmpeg -i ed_hd.avi -n -vn -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ed_hls_gear0/index.m3u8
+mkdir -p ed_hls_main_audio0
+if [ ! -f ed_hls_main_audio0/index0.ts ]; then
+  ffmpeg -i ed_hd.avi -n -vn -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_main_audio0/index.m3u8
+fi
+
+mkdir -p ed_hls_main_audio1
+if [ ! -f ed_hls_main_audio1/index0.ts ]; then
+  ffmpeg -i ed_hd.avi -n -vn -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_main_audio1/index.m3u8
 fi
 
 mkdir -p ed_hls_adesc0
 if [ ! -f ed_hls_adesc0/index0.ts ]; then
-  ffmpeg -i 'Elephants Dream with Audio Description.mov' -n -vn -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ed_hls_adesc0/index.m3u8
+  ffmpeg -i 'Elephants Dream with Audio Description.mov' -n -vn -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_adesc0/index.m3u8
 fi
 
 mkdir -p ed_hls_adesc1
 if [ ! -f ed_hls_adesc1/index0.ts ]; then
-  ffmpeg -i 'Elephants Dream with Audio Description.mov' -n -vn -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ed_hls_adesc1/index.m3u8
+  ffmpeg -i 'Elephants Dream with Audio Description.mov' -n -vn -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_adesc1/index.m3u8
 fi
 
 mkdir -p ed_hls_just_adesc0
 if [ ! -f ed_hls_just_adesc0/index0.ts ]; then
-  ffmpeg -i 'Elephants Dream Audio Description.wav' -n -vn -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ed_hls_just_adesc0/index.m3u8
+  ffmpeg -i 'Elephants Dream Audio Description.wav' -n -vn -b:a 64k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_just_adesc0/index.m3u8
 fi
 
 mkdir -p ed_hls_just_adesc1
 if [ ! -f ed_hls_just_adesc1/index0.ts ]; then
-  ffmpeg -i 'Elephants Dream Audio Description.wav' -n -vn -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls ed_hls_just_adesc1/index.m3u8
+  ffmpeg -i 'Elephants Dream Audio Description.wav' -n -vn -b:a 128k -ac 2 -acodec aac -ar 48000 -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_just_adesc1/index.m3u8
 fi
 
 # Create the Description WebVTT file
