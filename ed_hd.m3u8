@@ -1,6 +1,11 @@
 #EXTM3U
 
-#EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",NAME="Audio Description",DEFAULT=YES,AUTOSELECT=YES,FORCED=NO,LANGUAGE="en",CHARACTERISTICS="public.accessibility.transcribes-spoken-dialog,public.accessibility.describes-video",URI="ed_hls_webvtt/index.m3u8"
+#EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",NAME="English",DEFAULT=YES,AUTOSELECT=YES,FORCED=NO,LANGUAGE="en",CHARACTERISTICS="public.accessibility.transcribes-spoken-dialog",URI="ed_hls_webvtt/captions.en.m3u8"
+#EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",NAME="Swedish",DEFAULT=NO,AUTOSELECT=YES,FORCED=NO,LANGUAGE="sv",CHARACTERISTICS="public.accessibility.transcribes-spoken-dialog",URI="ed_hls_webvtt/captions.sv.m3u8"
+#EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",NAME="Russian",DEFAULT=NO,AUTOSELECT=YES,FORCED=NO,LANGUAGE="ru",CHARACTERISTICS="public.accessibility.transcribes-spoken-dialog",URI="ed_hls_webvtt/captions.ru.m3u8"
+#EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",NAME="Japanese",DEFAULT=NO,AUTOSELECT=YES,FORCED=NO,LANGUAGE="ja",CHARACTERISTICS="public.accessibility.transcribes-spoken-dialog",URI="ed_hls_webvtt/captions.ja.m3u8"
+#EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",NAME="Arabic",DEFAULT=NO,AUTOSELECT=YES,FORCED=NO,LANGUAGE="ar",CHARACTERISTICS="public.accessibility.transcribes-spoken-dialog",URI="ed_hls_webvtt/captions.ar.m3u8"
+#EXT-X-MEDIA:TYPE=SUBTITLES,GROUP-ID="subs",NAME="Audio Description (English)",DEFAULT=NO,AUTOSELECT=NO,FORCED=NO,LANGUAGE="en",CHARACTERISTICS="public.accessibility.transcribes-spoken-dialog,public.accessibility.describes-video",URI="ed_hls_webvtt/descriptions.en.m3u8"
 
 #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="ed_audio_64k",LANGUAGE="en",NAME="Main",AUTOSELECT=YES,DEFAULT=YES
 #EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="ed_audio_64k",LANGUAGE="en",NAME="Audio Described",AUTOSELECT=YES,DEFAULT=NO,CHARACTERISTICS="public.accessibility.describes-video",URI="ed_hls_adesc0/index.m3u8"
