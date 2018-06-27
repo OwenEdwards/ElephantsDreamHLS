@@ -39,7 +39,7 @@ fi
 #         Stream ,              Video            ,        Audio
 # gear5: 2800kbps, 1920x1080, Main, 4.0, 1920kbps, AAC-LC, Stereo, 128kbps
 # gear4: 1980kbps,  1280x720, Main, 3.1,  896kbps, AAC-LC, Stereo, 128kbps
-# gear3: 1400kbps,   842x480, Main, 3.1,  448kbps, AAC-LC, Stereo,  64kbps
+# gear3: 1400kbps,   854x480, Main, 3.1,  448kbps, AAC-LC, Stereo,  64kbps
 # gear2:  990kbps,   640x360, Main, 3.0,  448kbps, AAC-LC, Stereo,  64kbps
 # gear1:  700kbps,   480x270, Main, 1.3,  192kbps, AAC-LC, Stereo,  64kbps
 #
@@ -54,7 +54,7 @@ fi
 #
 # ffmpeg -hide_banner -y -i ed_hd.avi \
 #  -vf scale=w=640:h=360:force_original_aspect_ratio=decrease -c:a aac -ar 48000 -c:v h264 -profile:v main -crf 20 -sc_threshold 0 -g 48 -keyint_min 48 -hls_time 4 -hls_playlist_type vod  -b:v 800k -maxrate 856k -bufsize 1200k -b:a 96k -hls_segment_filename ed_hls/360p_%03d.ts ed_hls/360p.m3u8 \
-#  -vf scale=w=842:h=480:force_original_aspect_ratio=decrease -c:a aac -ar 48000 -c:v h264 -profile:v main -crf 20 -sc_threshold 0 -g 48 -keyint_min 48 -hls_time 4 -hls_playlist_type vod -b:v 1400k -maxrate 1498k -bufsize 2100k -b:a 128k -hls_segment_filename ed_hls/480p_%03d.ts ed_hls/480p.m3u8 \
+#  -vf scale=w=854:h=480:force_original_aspect_ratio=decrease -c:a aac -ar 48000 -c:v h264 -profile:v main -crf 20 -sc_threshold 0 -g 48 -keyint_min 48 -hls_time 4 -hls_playlist_type vod -b:v 1400k -maxrate 1498k -bufsize 2100k -b:a 128k -hls_segment_filename ed_hls/480p_%03d.ts ed_hls/480p.m3u8 \
 #  -vf scale=w=1280:h=720:force_original_aspect_ratio=decrease -c:a aac -ar 48000 -c:v h264 -profile:v main -crf 20 -sc_threshold 0 -g 48 -keyint_min 48 -hls_time 4 -hls_playlist_type vod -b:v 2800k -maxrate 2996k -bufsize 4200k -b:a 128k -hls_segment_filename ed_hls/720p_%03d.ts ed_hls/720p.m3u8 \
 #  -vf scale=w=1920:h=1080:force_original_aspect_ratio=decrease -c:a aac -ar 48000 -c:v h264 -profile:v main -crf 20 -sc_threshold 0 -g 48 -keyint_min 48 -hls_time 4 -hls_playlist_type vod -b:v 5000k -maxrate 5350k -bufsize 7500k -b:a 192k -hls_segment_filename ed_hls/1080p_%03d.ts ed_hls/1080p.m3u8
 
@@ -71,7 +71,7 @@ fi
 
 mkdir -p ed_hls_gear3
 if [ ! -f ed_hls_gear3/index0.ts ]; then
-  ffmpeg -i ed_hd.avi -n -s 842x480 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 3.1 -b:v 1400k -an -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_gear3/index.m3u8
+  ffmpeg -i ed_hd.avi -n -s 854x480 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 3.1 -b:v 1400k -an -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_gear3/index.m3u8
 fi
 
 mkdir -p ed_hls_gear2
