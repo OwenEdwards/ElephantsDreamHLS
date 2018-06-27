@@ -34,6 +34,8 @@ fi
 
 # Video:
 #
+# ***TOOO: Needs updating ***
+#
 #         Stream ,              Video            ,        Audio
 # gear5: 2800kbps, 1920x1080, Main, 4.0, 1920kbps, AAC-LC, Stereo, 128kbps
 # gear4: 1980kbps,  1280x720, Main, 3.1,  896kbps, AAC-LC, Stereo, 128kbps
@@ -41,12 +43,10 @@ fi
 # gear2:  990kbps,   640x360, Main, 3.0,  448kbps, AAC-LC, Stereo,  64kbps
 # gear1:  700kbps,   480x270, Main, 1.3,  192kbps, AAC-LC, Stereo,  64kbps
 #
-# gear0:   64kbps,         -,    -,   -,        -, AAC-LC, Stereo,  64kbps
-#
 # Audio tracks:
 #
-# AAC-LC, Stereo, 128kbps
-# AAC-LC, Stereo,  64kbps
+# 1: AAC-LC, Stereo, 128kbps
+# 0: AAC-LC, Stereo,  64kbps
 #
 
 # To try:
@@ -141,6 +141,8 @@ captions='captions.en.vtt captions.ja.vtt captions.ar.vtt captions.ru.vtt captio
 for file in $captions; do
   if [ ! -f $file ]; then
     wget https://raw.githubusercontent.com/videojs/video.js/master/docs/examples/elephantsdream/$file
+  else
+    echo "File '$file' is already present"
   fi
 
   sed 's/^WEBVTT/&\
@@ -159,4 +161,6 @@ EOF
 
 done
 
-mediastreamvalidator -O . ed_hd.m3u8 && hlsreport.py -o ed_hd.html validation_data.json
+echo ''
+
+mediastreamvalidator -O . ed_hd.m3u8 && hlsreport.py -o ed_hd_validation_data.html validation_data.json

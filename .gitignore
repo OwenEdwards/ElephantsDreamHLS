@@ -1,4 +1,10 @@
+*.wav
+*.mov
+*.avi
+*.webvtt
+
 *.ts
-ElephantsDreamAudioDescription
-captions.*.vtt
-ed_hd.avi
+*.vtt
+
+validation_data.json
+ed_hd_validation_data.html
