@@ -12,6 +12,12 @@ Run:
 ed.sh
 ```
 
+To clean up all created files, run:
+
+```
+clean.sh
+```
+
 ## Prerequisites
 
 The following tools are needed (some using Homebrew):
@@ -24,14 +30,14 @@ sed
 cat
 ```
 
-And optionally (from Apple):
+And from Apple:
 
 ```
+mediasubtitlesegmenter
 mediastreamvalidator
 hlsreport.py
 ```
 
-to run a report on the HLS program when it is finished.
 
 ## TODO
 
