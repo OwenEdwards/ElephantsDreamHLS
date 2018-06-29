@@ -9,7 +9,7 @@ Works on macOS with iTerm2 shell.
 Run:
 
 ```
-> ed.sh
+ed.sh
 ```
 
 ## Prerequisites

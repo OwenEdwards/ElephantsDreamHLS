@@ -31,6 +31,7 @@ else
   echo "File 'ed-description-jjhunt.webvtt' is already present"
 fi
 
+echo ''
 
 # Video:
 #
@@ -118,22 +119,13 @@ fi
 
 mkdir -p ed_hls_webvtt
 
+source='ed-description-jjhunt.webvtt'
 file='descriptions.en.vtt'
 
-sed 's/^WEBVTT/&\
-X-TIMESTAMP-MAP=MPEGTS:90000,LOCAL:00:00:00.000/1' < ed-description-jjhunt.webvtt > ed_hls_webvtt/$file
-
-cat > ed_hls_webvtt/$( basename $file .vtt ).m3u8 << EOF
-#EXTM3U
-#EXT-X-VERSION:3
-#EXT-X-TARGETDURATION:654
-#EXT-X-MEDIA-SEQUENCE:0
-#EXT-X-PLAYLIST-TYPE:VOD
-#EXTINF:654,
-$file
-#EXT-X-ENDLIST
-EOF
-
+if [ ! -f ed_hls_webvtt/$( basename $file .vtt )0.webvtt ]; then
+  echo "Creating ${file} segments"
+  mediasubtitlesegmenter -t 6 -f ed_hls_webvtt -i $( basename $file .vtt ).m3u8 -B $( basename $file .vtt ) -m 90000 -D 654 -l $( basename $file .vtt ).log ${source}
+fi
 # Create captions & subtitles WebVTT files from the video.js repo
 
 captions='captions.en.vtt captions.ja.vtt captions.ar.vtt captions.ru.vtt captions.sv.vtt'
@@ -145,19 +137,12 @@ for file in $captions; do
     echo "File '$file' is already present"
   fi
 
-  sed 's/^WEBVTT/&\
-X-TIMESTAMP-MAP=MPEGTS:90000,LOCAL:00:00:00.000/1' < $file > ed_hls_webvtt/$file
+  source=${file}
 
-  cat > ed_hls_webvtt/$( basename $file .vtt ).m3u8 << EOF
-#EXTM3U
-#EXT-X-VERSION:3
-#EXT-X-TARGETDURATION:654
-#EXT-X-MEDIA-SEQUENCE:0
-#EXT-X-PLAYLIST-TYPE:VOD
-#EXTINF:654,
-$file
-#EXT-X-ENDLIST
-EOF
+  if [ ! -f ed_hls_webvtt/$( basename $file .vtt )0.webvtt ]; then
+    echo "Creating ${file} segments"
+    mediasubtitlesegmenter -t 6 -f ed_hls_webvtt -i $( basename $file .vtt ).m3u8 -B $( basename $file .vtt ) -m 90000 -D 654 -l $( basename $file .vtt ).log ${source}
+  fi
 
 done
 
