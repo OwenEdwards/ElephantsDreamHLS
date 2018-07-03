@@ -62,27 +62,27 @@ echo ''
 
 mkdir -p ed_hls_gear5
 if [ ! -f ed_hls_gear5/index0.ts ]; then
-  ffmpeg -i ed_hd.avi -n -s 1920x1080 -vcodec h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 4.0 -b:v 2800k -an -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_gear5/index.m3u8
+  ffmpeg -i ed_hd.avi -n -s 1920x1080 -vcodec h264 -preset slower -sc_threshold 0 -g 48 -x264-params keyint=48:min-keyint=24 -profile:v high -level 4.2 -b:v 6000k -an -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_gear5/index.m3u8
 fi
 
 mkdir -p ed_hls_gear4
 if [ ! -f ed_hls_gear4/index0.ts ]; then
-  ffmpeg -i ed_hd.avi -n -s 1280x720 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 3.1 -b:v 1980k -an -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_gear4/index.m3u8
+  ffmpeg -i ed_hd.avi -n -s 1280x720 -vcodec h264 -preset slower -sc_threshold 0 -g 48 -x264-params keyint=48:min-keyint=24 -profile:v high -level 4.0 -b:v 3000k -an -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_gear4/index.m3u8
 fi
 
 mkdir -p ed_hls_gear3
 if [ ! -f ed_hls_gear3/index0.ts ]; then
-  ffmpeg -i ed_hd.avi -n -s 854x480 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 3.1 -b:v 1400k -an -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_gear3/index.m3u8
+  ffmpeg -i ed_hd.avi -n -s 854x480 -vcodec h264 -preset slower -sc_threshold 0 -g 48 -x264-params keyint=48:min-keyint=24 -profile:v main -level 4.0 -b:v 2000k -an -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_gear3/index.m3u8
 fi
 
 mkdir -p ed_hls_gear2
 if [ ! -f ed_hls_gear2/index0.ts ]; then
-  ffmpeg -i ed_hd.avi -n -s 640x360 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 3.0 -b:v 990k -an -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_gear2/index.m3u8
+  ffmpeg -i ed_hd.avi -n -s 640x360 -vcodec h264 -preset slower -sc_threshold 0 -g 48 -x264-params keyint=48:min-keyint=24 -profile:v main -level 3.1 -b:v 1000k -an -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_gear2/index.m3u8
 fi
 
 mkdir -p ed_hls_gear1
 if [ ! -f ed_hls_gear1/index0.ts ]; then
-  ffmpeg -i ed_hd.avi -n -s 480x270 -vcodec  h264 -g 48 -x264-params frame=key_frame:no-scenecut -profile:v main -level 1.3 -b:v 700k -an -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_gear1/index.m3u8
+  ffmpeg -i ed_hd.avi -n -s 480x270 -vcodec h264 -preset slower -sc_threshold 0 -g 48 -x264-params keyint=48:min-keyint=24 -profile:v main -level 3.0 -b:v 700k -an -start_number 0 -hls_time 6 -hls_list_size 0 -hls_playlist_type vod -f hls ed_hls_gear1/index.m3u8
 fi
 
 mkdir -p ed_hls_main_audio0
