@@ -1,10 +1,17 @@
+# Input files
+
 *.wav
 *.mov
 *.avi
 *.webvtt
 
+# Output files
+
 *.ts
 *.vtt
 
+# Information and logs
+
 validation_data.json
 ed_hd_validation_data.html
+*.log
