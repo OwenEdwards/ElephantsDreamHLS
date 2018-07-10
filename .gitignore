@@ -20,4 +20,5 @@ ed_hls_webvtt
 
 validation_data.json
 ed_hd_validation_data.html
+ed_hd_debug_validation_data.html
 *.log

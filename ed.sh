@@ -149,3 +149,4 @@ done
 echo ''
 
 mediastreamvalidator -O . ed_hd.m3u8 && hlsreport.py -o ed_hd_validation_data.html validation_data.json
+mediastreamvalidator -O . ed_hd_debug.m3u8 && hlsreport.py -o ed_hd_debug_validation_data.html validation_data.json
