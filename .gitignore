@@ -5,7 +5,13 @@
 *.avi
 *.webvtt
 
-# Output files
+# Output folders and files
+
+ed_hls_gear*
+ed_hls_main_audio*
+ed_hls_adesc*
+ed_hls_just_adesc*
+ed_hls_webvtt
 
 *.ts
 *.vtt
