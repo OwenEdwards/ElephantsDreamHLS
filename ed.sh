@@ -25,10 +25,10 @@ if [ ! -f 'Elephants Dream Audio Description.wav' ]; then
 else
   echo "File 'Elephants Dream Audio Description.wav' is already present"
 fi
-if [ ! -f 'ed-description-jjhunt.webvtt' ]; then
-  wget 'https://raw.githubusercontent.com/OwenEdwards/ElephantsDreamAudioDescription/master/ed-description-jjhunt.webvtt'
+if [ ! -f 'ed-description-jjhunt.vtt' ]; then
+  wget 'https://raw.githubusercontent.com/OwenEdwards/ElephantsDreamAudioDescription/master/ed-description-jjhunt.vtt'
 else
-  echo "File 'ed-description-jjhunt.webvtt' is already present"
+  echo "File 'ed-description-jjhunt.vtt' is already present"
 fi
 
 echo ''
@@ -119,7 +119,7 @@ fi
 
 mkdir -p ed_hls_webvtt
 
-source='ed-description-jjhunt.webvtt'
+source='ed-description-jjhunt.vtt'
 file='descriptions.en.vtt'
 
 if [ ! -f ed_hls_webvtt/$( basename $file .vtt )0.webvtt ]; then
